@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <h2 class="text-center text-primary fw-bold mb-4">Add New User</h2>
+  
+  <form [formGroup]="addUserForm" (ngSubmit)="addUser()" class="mx-auto" style="max-width: 600px;">
+    
+  
+    <div class="mb-3">
+      <label for="name" class="form-label fw-semibold">Name</label>
+      <input type="text" class="form-control shadow-sm" id="name" formControlName="name" placeholder="Enter full name"/>
+      <div *ngIf="addUserForm.controls['name'].touched && addUserForm.controls['name'].invalid" class="text-danger mt-1">
+        Name is required and must be at least 3 characters long.
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Email</label>
+      <input type="email" class="form-control shadow-sm" id="email" formControlName="email" placeholder="Enter email address"/>
+      <div *ngIf="addUserForm.controls['email'].touched && addUserForm.controls['email'].invalid" class="text-danger mt-1">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    
+    <div class="mb-3">
+      <label for="gender" class="form-label fw-semibold">Gender</label>
+      <select class="form-select shadow-sm" id="gender" formControlName="gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <div *ngIf="addUserForm.controls['gender'].touched && addUserForm.controls['gender'].invalid" class="text-danger mt-1">
+        Gender is required.
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label for="status" class="form-label fw-semibold">Status</label>
+      <select class="form-select shadow-sm" id="status" formControlName="status">
+        <option value="" disabled selected>Select Status</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+      <div *ngIf="addUserForm.controls['status'].touched && addUserForm.controls['status'].invalid" class="text-danger mt-1">
+        Status is required.
+      </div>
+    </div>
+
+    
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary fw-bold py-2" [disabled]="addUserForm.invalid">
+        + Add User
+      </button>
+    </div>
+
+  </form>
+</div>

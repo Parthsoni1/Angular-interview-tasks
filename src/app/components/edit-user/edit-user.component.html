@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <h2 class="text-center text-warning fw-bold mb-4">Edit User</h2>
+  
+  <form [formGroup]="editUserForm" (ngSubmit)="updateUser()" class="mx-auto" style="max-width: 600px;">
+    
+   
+    <div class="mb-3">
+      <label for="name" class="form-label fw-semibold">Name</label>
+      <input type="text" class="form-control shadow-sm" id="name" formControlName="name" placeholder="Enter full name"/>
+      <div *ngIf="editUserForm.controls['name'].touched && editUserForm.controls['name'].invalid" class="text-danger mt-1">
+        Name is required and must be at least 3 characters long.
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Email</label>
+      <input type="email" class="form-control shadow-sm" id="email" formControlName="email" placeholder="Enter email address"/>
+      <div *ngIf="editUserForm.controls['email'].touched && editUserForm.controls['email'].invalid" class="text-danger mt-1">
+        Please enter a valid email.
+      </div>
+    </div>
+
+  
+    <div class="mb-3">
+      <label for="gender" class="form-label">Gender</label>
+      <select
+        class="form-select"
+        id="gender"
+        formControlName="gender"
+      >
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div
+        *ngIf="editUserForm.controls['gender'].touched && editUserForm.controls['gender'].invalid"
+        class="text-danger"
+      >
+        Gender is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select
+        class="form-select"
+        id="status"
+        formControlName="status"
+      >
+        <option value="">Select Status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+      <div
+        *ngIf="editUserForm.controls['status'].touched && editUserForm.controls['status'].invalid"
+        class="text-danger"
+      >
+        Status is required.
+      </div>
+    </div>
+
+    
+    <div class="d-grid">
+      <button type="submit" class="btn btn-warning fw-bold py-2" [disabled]="editUserForm.invalid">
+         Update User
+      </button>
+    </div>
+
+  </form>
+</div>
